@@ -1,0 +1,92 @@
+/* * a tag with button class */
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        /* * only inline block if want some padding or margin */
+        display: inline-block;
+        border-radius: 10rem;
+        /* * transition property for all transform effect */
+        transition: all 0.2s;
+        position: relative;
+        font-size: $default-font-size;
+    }
+
+    &:hover {
+        /*  * since Y is up to donw, so up is neg */
+        transform: translateY(-0.3rem);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        &::after {
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+        }
+    }
+
+    /* * when click a btn, it's active psedo class,make a click down effect */
+    &:active {
+        transform: translateY(-0.1rem);
+        box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+        &::after {
+            background-color: $color-white;
+        }
+    }
+
+    &--green {
+        background-color: $color-primary;
+        color: $color-white;
+        &::after {
+            background-color: $color-primary;
+        }
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 100px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+
+    &--animated {
+        animation: moveInBottom 0.5s ease-out;
+        /*  * will apply the 0% effect to the element */
+        animation-fill-mode: backwards;
+    }
+}
+
+.btn-text {
+    &:link,
+    &:visited {
+        color: $color-primary;
+        display: inline-block;
+        text-decoration: none;
+        border-bottom: .1rem solid $color-primary;
+        padding: .3rem;
+        font-size: $default-font-size;
+        transition: all .2s;
+    }
+
+    &:hover {
+        color: $color-white;
+        background: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);
+        transform: translateY(-0.2rem);
+    }
+
+    &:active {
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);
+        transform: translateY(-0.1rem);
+    }
+}
